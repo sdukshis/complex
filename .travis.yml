@@ -1,3 +1,5 @@
+sudo: false
+
 language: cpp
 
 compiler:
@@ -12,3 +14,12 @@ install:
 
 script:
   - ctest -V
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-5.1
+    - g++-5.1
+    - clang-3.7
