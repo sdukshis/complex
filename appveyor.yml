@@ -1,0 +1,17 @@
+version: 1.0.{build}
+
+clone_folder: c:\dev\complex
+
+build:
+
+build_script:
+    - cd c:\dev\complex
+    - md build
+    - cd build
+    - cmake -G"Visual Studio 12" ..
+    - cmake --build . --config debug
+
+after_build:
+
+test_script:
+    - cmd: ctest -C Debug -VV
