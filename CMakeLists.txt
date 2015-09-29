@@ -2,7 +2,14 @@ cmake_minimum_required(VERSION 2.8)
 
 project(Complex CXX)
 
-add_definitions(-Wall -std=c++11)
+if (MSVC)
+    add_definitions(/W4)
+elseif(CMAKE_COMPILER_IS_GNUCXX)
+    add_definitions(-Wall)
+    add_definitions(-std=c++11)
+else()
+    message(FATAL_ERROR "Unsupporrted compiler version")
+endif()
 
 include_directories(Catch/include)
 include_directories(include)
