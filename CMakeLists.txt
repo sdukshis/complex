@@ -4,11 +4,9 @@ project(Complex CXX)
 
 if (MSVC)
     add_definitions(/W4)
-elseif(CMAKE_COMPILER_IS_GNUCXX)
+else()
     add_definitions(-Wall)
     add_definitions(-std=c++11)
-else()
-    message(FATAL_ERROR "Unsupporrted compiler version")
 endif()
 
 include_directories(Catch/include)
