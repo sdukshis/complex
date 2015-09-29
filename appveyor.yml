@@ -4,7 +4,7 @@ clone_folder: c:\dev\complex
 
 build:
 
-install_script:
+install:
     - git submodule -q update --init --recursive
 
 build_script:
