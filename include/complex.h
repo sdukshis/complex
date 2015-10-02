@@ -3,6 +3,8 @@
 
 #include <math.h>
 
+/* Complex number class
+*/
 class Complex {
  public:
     Complex() = default;
