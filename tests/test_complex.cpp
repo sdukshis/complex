@@ -54,4 +54,11 @@ TEST_CASE("Complex double value ctor") {
         REQUIRE(z.real() == 1.0);
         REQUIRE(z.imag() == 1.0);
     }
+
+    SECTION("z = 2.0 + 1.0i") {
+        Complex z(2.0, 1.0);
+
+        REQUIRE(z.real() == 2.0);
+        REQUIRE(z.imag() == 1.0);
+    }
 }
