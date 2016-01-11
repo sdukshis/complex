@@ -2,6 +2,24 @@ cmake_minimum_required(VERSION 2.8)
 
 project(Complex CXX)
 
+option(COVERALLS "Turn on coveralls support" OFF)
+option(COVERALLS_UPLOAD "Upload the generated coveralls json" ON)
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} 
+    ${PROJECT_SOURCE_DIR}/coveralls-cmake/cmake)
+
+if (COVERALLS)
+    include(Coveralls)
+    coveralls_turn_on_coverage()
+endif()
+
+if (COVERALLS)
+    coveralls_setup(
+        "tests/test_complex.cpp" 
+        ${COVERALLS_UPLOAD}                 
+        "${PROJECT_SOURCE_DIR}/coveralls-cmake/cmake")
+endif()
+
 if (MSVC)
     add_definitions(/W4)
 else()

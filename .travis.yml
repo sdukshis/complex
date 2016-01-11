@@ -14,8 +14,9 @@ install:
   - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug
   - make
+  - make coveralls
 
 script:
   - ctest -V

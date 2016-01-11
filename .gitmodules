@@ -1,3 +1,6 @@
 [submodule "Catch"]
 	path = Catch
 	url = https://github.com/philsquared/Catch.git
+[submodule "coveralls-cmake"]
+	path = coveralls-cmake
+	url = https://github.com/JoakimSoderberg/coveralls-cmake
