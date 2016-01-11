@@ -13,12 +13,6 @@ if (COVERALLS)
     coveralls_turn_on_coverage()
 endif()
 
-if (COVERALLS)
-    coveralls_setup(
-        "tests/test_complex.cpp" 
-        ${COVERALLS_UPLOAD}                 
-        "${PROJECT_SOURCE_DIR}/coveralls-cmake/cmake")
-endif()
 
 if (MSVC)
     add_definitions(/W4)
@@ -28,8 +22,17 @@ else()
 endif()
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    add_definitions(-fprofile-arcs)
-    add_definitions(-ftest-coverage)
+    if (COVERALLS)
+        include(Coveralls)
+        coveralls_turn_on_coverage()
+    endif()
+
+    if (COVERALLS)
+        coveralls_setup(
+            "tests/test_complex.cpp" 
+            ${COVERALLS_UPLOAD}                 
+            "${PROJECT_SOURCE_DIR}/coveralls-cmake/cmake")
+    endif()
 endif()
 
 include_directories(Catch/include)

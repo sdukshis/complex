@@ -6,7 +6,7 @@ compiler:
   - clang
   - gcc
 
-before_script:
+before_install:
   - export COVERALLS_SERVICE_NAME=travis-ci
   - export COVERALLS_REPO_TOKEN=VJOMnwERpYG3lAKNRcDzXdIl5BX5qnMvC
 
@@ -17,10 +17,9 @@ install:
   - cd build
   - cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - make
-  - make coveralls
 
 script:
-  - ctest -V
+  - make coveralls
 
 addons:
   apt:
