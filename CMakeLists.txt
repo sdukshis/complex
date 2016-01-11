@@ -21,6 +21,7 @@ else()
     add_definitions(-std=c++11)
 endif()
 
+
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     if (COVERALLS)
         include(Coveralls)
@@ -29,7 +30,7 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
     if (COVERALLS)
         coveralls_setup(
-            "tests/test_complex.cpp" 
+            "include/complex.h" 
             ${COVERALLS_UPLOAD}                 
             "${PROJECT_SOURCE_DIR}/coveralls-cmake/cmake")
     endif()
