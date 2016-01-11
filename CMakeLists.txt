@@ -7,6 +7,8 @@ if (MSVC)
 else()
     add_definitions(-Wall)
     add_definitions(-std=c++11)
+    add_definitions(-fprofile-arcs)
+    add_definitions(-ftest-coverage)
 endif()
 
 include_directories(Catch/include)
@@ -15,5 +17,6 @@ include_directories(include)
 enable_testing()
 
 add_executable(test_complex tests/test_complex.cpp)
+target_link_libraries(test_complex gcov)
 
 add_test(NAME ${PROJECT_NAME} COMMAND test_complex)
